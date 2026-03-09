@@ -4,7 +4,7 @@ use std::path::PathBuf;
 use crate::application::analysis::AnalysisReport;
 use crate::application::service::HashInspection;
 use crate::domain::error::TelfhashError;
-use crate::domain::model::{GroupingResult, TelfhashResult};
+use crate::domain::model::{GroupingResult, TelfhashResult, portable_path_display};
 use crate::interfaces::debug::emit_debug_report;
 use crate::interfaces::legacy::{render_json, render_telfhash};
 use crate::interfaces::sarif::render_sarif;
@@ -86,14 +86,14 @@ impl OutputEmitter {
         for (index, group) in groups.grouped.iter().enumerate() {
             println!("Group {}:", index + 1);
             for file in group {
-                println!("    {}", file.display());
+                println!("    {}", portable_path_display(file));
             }
         }
 
         if !groups.nogroup.is_empty() {
             println!("Ungrouped:");
             for file in &groups.nogroup {
-                println!("    {}", file.display());
+                println!("    {}", portable_path_display(file));
             }
         }
 

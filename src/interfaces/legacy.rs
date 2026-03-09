@@ -1,5 +1,3 @@
-use std::path::PathBuf;
-
 use serde::Serialize;
 
 use crate::domain::error::TelfhashError;
@@ -7,7 +5,7 @@ use crate::domain::model::{FailureReason, HashValue, TelfhashOutcome, TelfhashRe
 
 #[derive(Debug, Clone, Serialize, PartialEq, Eq)]
 struct LegacyTelfhashRecord {
-    file: PathBuf,
+    file: String,
     telfhash: String,
     msg: String,
 }
@@ -31,7 +29,7 @@ pub fn render_json(results: &[TelfhashResult]) -> Result<String, TelfhashError> 
     let records = results
         .iter()
         .map(|result| LegacyTelfhashRecord {
-            file: result.file.clone(),
+            file: result.file_display(),
             telfhash: render_telfhash(result),
             msg: render_msg(result),
         })

@@ -119,7 +119,7 @@ impl TelfhashResult {
     }
 
     pub fn file_display(&self) -> String {
-        self.file.display().to_string()
+        portable_path_display(&self.file)
     }
 }
 
@@ -186,13 +186,17 @@ pub fn cmp_paths(left: &Path, right: &Path) -> std::cmp::Ordering {
     left.to_string_lossy().cmp(&right.to_string_lossy())
 }
 
+pub fn portable_path_display(path: &Path) -> String {
+    path.to_string_lossy().replace('\\', "/")
+}
+
 #[cfg(test)]
 mod tests {
     use std::path::PathBuf;
 
     use super::{
         FailureReason, HashValue, NoSymbolsReason, NullDigestReason, TelfhashOutcome,
-        TelfhashResult,
+        TelfhashResult, portable_path_display,
     };
 
     #[test]
@@ -227,6 +231,14 @@ mod tests {
         assert_eq!(
             FailureReason::UnsupportedArchitecture.message(),
             "Unsupported ELF architecture"
+        );
+    }
+
+    #[test]
+    fn normalizes_path_separators_for_legacy_outputs() {
+        assert_eq!(
+            portable_path_display(std::path::Path::new("tests\\fixtures\\bin\\sample")),
+            "tests/fixtures/bin/sample"
         );
     }
 }
