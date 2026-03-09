@@ -44,9 +44,16 @@ jobs:
         run: cargo test
       - name: Test with logging
         run: cargo test --features logging
+      - name: Install cargo-llvm-cov
+        if: matrix.name == 'linux-x64'
+        uses: taiki-e/install-action@cargo-llvm-cov
+      - name: Generate coverage report
+        if: matrix.name == 'linux-x64'
+        run: cargo llvm-cov --all-features --workspace --lcov --output-path lcov.info
       - name: Upload coverage reports to Codecov
         if: matrix.name == 'linux-x64'
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: seifreed/telfhash-rs
+          files: lcov.info
