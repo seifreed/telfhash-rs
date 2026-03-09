@@ -256,6 +256,25 @@ cargo test --features logging
 
 ---
 
+## Release Process
+
+Releases are published from Git tags.
+
+```bash
+# bump Cargo.toml version first
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The `release` workflow will:
+
+- run the full test matrix
+- verify the tag version matches `Cargo.toml`
+- publish the crate to crates.io using `CARGO_REGISTRY_TOKEN`
+- create the corresponding GitHub release
+
+---
+
 ## License
 
 This project is licensed under the Apache 2.0 License. See [LICENSE](LICENSE).
