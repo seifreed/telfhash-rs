@@ -1,0 +1,6 @@
+# mnemonic|operand
+call|0x401000
+nop|
+call|eax
+call|0x402000
+call|0x401000

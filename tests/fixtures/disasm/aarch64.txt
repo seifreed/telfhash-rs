@@ -1,0 +1,5 @@
+# mnemonic|operand
+bl|#0x400754
+adrp|x0, #0x410000
+blr|x9
+bl|#0x401000

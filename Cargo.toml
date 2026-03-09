@@ -1,0 +1,47 @@
+[package]
+name = "telfhash-rs"
+version = "0.1.0"
+edition = "2024"
+description = "Rust 2024 implementation of Trend Micro telfhash for ELF similarity hashing"
+license = "Apache-2.0"
+repository = "https://github.com/seifreed/telfhash-rs"
+homepage = "https://github.com/seifreed/telfhash-rs"
+readme = "README.md"
+keywords = ["elf", "malware", "tlsh", "similarity", "forensics"]
+categories = ["command-line-utilities", "algorithms"]
+
+[lib]
+name = "telfhash_rs"
+
+[[bin]]
+name = "telfhash"
+path = "src/main.rs"
+
+[features]
+default = []
+logging = ["dep:tracing", "dep:tracing-subscriber"]
+
+[dependencies]
+capstone = { version = "0.14.0", default-features = false, features = ["std", "full", "arch_x86", "arch_arm", "arch_arm64", "arch_mips"] }
+clap = { version = "4.5.32", features = ["derive"] }
+glob = "0.3.2"
+goblin = "0.10.5"
+once_cell = "1.21.3"
+regex = "1.11.1"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+thiserror = "2.0.12"
+tlsh-rs = "0.1.0"
+tracing = { version = "0.1.41", optional = true }
+tracing-subscriber = { version = "0.3.19", features = ["env-filter", "fmt"], optional = true }
+walkdir = "2.5.0"
+
+[dev-dependencies]
+assert_cmd = "2.0.16"
+criterion = "0.5.1"
+predicates = "3.1.3"
+tempfile = "3.19.1"
+
+[[bench]]
+name = "hash_fixtures"
+harness = false

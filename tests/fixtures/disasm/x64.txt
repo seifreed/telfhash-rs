@@ -1,0 +1,5 @@
+# mnemonic|operand
+call|0x401020
+lea|rax, [rip + 0x20]
+call|qword ptr [rax]
+call|0x402100

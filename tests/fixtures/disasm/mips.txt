@@ -1,0 +1,4 @@
+# mnemonic|operand
+lw|$t9, 0x801234($gp)
+jalr|$t9
+lw|$t9, 0x804000($gp)

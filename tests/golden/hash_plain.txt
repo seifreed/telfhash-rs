@@ -1,0 +1,9 @@
+tests/fixtures/bin/aarch64_dyn_stripped.so     t1c3d0c2f02139c5b224593e96ec3003008c279e42a5603c4ab3d9c9f0de0e35ad14192f
+tests/fixtures/bin/arm32_dyn_stripped.so       t14731240e0d3e0be957525c58581067c3848b88be6425fb15fba9ede01e0e5ecf3c8d09
+tests/fixtures/bin/arm32_tnull.so              tnull
+tests/fixtures/bin/i386_dyn_stripped.so        t148c09bd0113d5dd455963c158ce06f0114078a01d6811c5bb325cddcee1d30bf605d5f
+tests/fixtures/bin/not_elf_archive.a           -
+tests/fixtures/bin/x86_64_dyn_stripped.so      t18bc08cd0113d09c456923c128ca06b0000078a00da841c5ab205c8c8ee2d30ae60099e
+tests/fixtures/bin/x86_64_not_stripped.so      t133d0a9008e389ac8b0e2af369c086082891bc4899a080b80af1cc9da8a0e80af315659
+tests/fixtures/bin/x86_64_static_pie_stripped  -
+
