@@ -9,6 +9,13 @@ homepage = "https://github.com/seifreed/telfhash-rs"
 readme = "README.md"
 keywords = ["elf", "malware", "tlsh", "similarity", "forensics"]
 categories = ["command-line-utilities", "algorithms"]
+include = [
+    "src/**",
+    "Cargo.toml",
+    "Cargo.lock",
+    "README.md",
+    "CHANGELOG.md",
+]
 
 [lib]
 name = "telfhash_rs"
