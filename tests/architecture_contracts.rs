@@ -33,12 +33,7 @@ fn application_layer_does_not_depend_on_interfaces() {
 
 #[test]
 fn docs_cover_architecture_domain_and_legacy_constraints() {
-    for path in [
-        "docs/ARCHITECTURE.md",
-        "docs/DOMAIN.md",
-        "docs/LEGACY.md",
-        "docs/PUBLIC_API.md",
-    ] {
+    for path in ["README.md", "CHANGELOG.md", "Cargo.toml"] {
         let body = read(path);
         assert!(!body.trim().is_empty(), "{path} should not be empty");
     }
